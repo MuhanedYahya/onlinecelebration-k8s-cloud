@@ -215,7 +215,7 @@ pipeline {
                             echo "Error in the Monitoring tools";exit 1;
                         fi
                     '''
-            }
+            }   }
         }
     }
 
