@@ -13,7 +13,7 @@ spec:
         app: onlinecelebration
     spec:
       containers:
-        - name: nginx-container
+        - name: nginx-pod
           image: muhanedyahya/onlinecelebration-nginx:v2
           envFrom:
           - configMapRef:

@@ -143,9 +143,14 @@ pipeline {
 
                             fi
                         then 
+                            // wait pods to be in running state
+                            php_pod_name=$(kubectl get pods -l app=php-pod -o jsonpath='{.items[0].metadata.name}');
+                            nginx_pod_name=$(kubectl get pods -l app=nginx-pod -o jsonpath='{.items[0].metadata.name}');
+                            kubectl wait --for=condition=Ready pods -l app=$php_pod_name;
+                            kubectl wait --for=condition=Ready pods -l app=$nginx_pod_name;
                             // to avoid database cached connection
                             echo "running php artisan config:cache inside of php pod";
-                            pod_name=$(kubectl get pods -l app=onlinecelebration-php -o jsonpath='{.items[0].metadata.name}');
+                            pod_name=$(kubectl get pods -l app=php-pod -o jsonpath='{.items[0].metadata.name}');
                             if kubectl exec $pod_name -- php artisan config:cache;then 
                                 echo "Application config cache cleared.";
                                 echo "Application deployed seccessfully on Kubernetes. :)";
@@ -201,7 +206,7 @@ pipeline {
                         echo "----------------------------------------------------------------------";
                         echo "Checking Monitoring tools if exists....";
                         if
-                            status=$(kubectl get deployment prometheus -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
+                            status=$(kubectl get deployment prometheus-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                             if [ "$status" == "True" ]; then
                                 echo "Prometheus already exists.";
                             else
@@ -209,7 +214,7 @@ pipeline {
                                 kubectl apply -f kubernetes/prometheus.yaml;
                                 echo "----------------------------------------------------------------------";
 
-                                status=$(kubectl get deployment grafana -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
+                                status=$(kubectl get deployment grafana-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                                 if [ "$status" == "True" ]; then
                                     echo "grafana already exists.";
                                 else

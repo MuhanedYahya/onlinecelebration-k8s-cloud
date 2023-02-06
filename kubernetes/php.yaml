@@ -13,7 +13,7 @@ spec:
         app: onlinecelebration-php
     spec:
       containers:
-        - name: onlinecelebration-php
+        - name: php-pod
           image: muhanedyahya/onlinecelebration-php:v2
           envFrom:
           - configMapRef:
