@@ -35,4 +35,4 @@ spec:
               name: laravel-secret
           imagePullPolicy: Always
       imagePullSecrets:
-        - name: regcred
+        - name: docker-secret
