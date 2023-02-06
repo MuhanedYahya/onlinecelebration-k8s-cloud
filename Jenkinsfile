@@ -141,7 +141,11 @@ pipeline {
                                 // to avoid database cached connection
                                 echo "running php artisan config:cache inside of php pod";
                                 pod_name=$(kubectl get pods -l app=onlinecelebration-php -o jsonpath='{.items[0].metadata.name}');
-                                kubectl exec $pod_name -- php artisan config:cache;
+                                if kubectl exec $pod_name -- php artisan config:cache;then 
+                                    echo "Application config cache cleared.";
+                                else 
+                                    echo "error in clearing cache !!";
+                                fi
                             fi
                         then 
                             echo "Application deployed seccessfully on Kubernetes. :)";
