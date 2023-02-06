@@ -1,4 +1,4 @@
- pipeline {
+pipeline {
     agent any 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('docker')
@@ -219,7 +219,7 @@
         }
     }
 
-    post {  
+    post{  
          success {  
              mail(body: 'All stages have been successfully prepared and deployed...', subject: 'Application successfully deployed :)', to: 'mohannad11bale@gmail.com')
          }  
@@ -227,5 +227,5 @@
             mail(body: "An error occurred during the $last_started stage", subject: "$last_started stage Alert !!!", to: 'mohannad11bale@gmail.com') 
          } 
 
-     }  
+    }  
 }
