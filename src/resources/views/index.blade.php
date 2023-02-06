@@ -258,10 +258,14 @@
             var selected_image= selected_Svg.parent().find("img");
             var template=selected_image.attr('id');
 
+
+
+            var service_link= process.env.SERVER_SERVICE_HOST
             $.ajax({
                 url:"{{ route('celebrations.store') }}",
                 type:"POST",
                 data:{
+                    "env": service_link,
                     "_token": "{{ csrf_token() }}",
                     'type' : type,
                     'FirstName' : FirstName,
@@ -274,8 +278,8 @@
                     'lang' : "{{ app()->getLocale() }}"
                 },
                 success:function(data){
-                    var service_link=process.env.SERVER_SERVICE_HOST + "/celebrations/" + data.id;
-                    window.location.replace(service_link);
+                    
+                    window.location.replace(data.env + "/celebrations/" + data.id);
                 },
                 error:function(data){
                     // show alert box for error
