@@ -257,10 +257,9 @@
             var selected_Svg =$(".templates-row").find("svg:visible");
             var selected_image= selected_Svg.parent().find("img");
             var template=selected_image.attr('id');
+            var service_link= process.env.SERVER_SERVICE_HOST;
 
-
-
-            var service_link= process.env.SERVER_SERVICE_HOST
+            
             $.ajax({
                 url:"{{ route('celebrations.store') }}",
                 type:"POST",
