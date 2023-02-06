@@ -1,0 +1,98 @@
+:root {
+    --titles-font:ar_titles_font;
+    --messages-font:ar_messages_font;
+}
+/* index codes */
+#indexMain{
+    direction: rtl;
+}
+#indexMain h6{
+    text-align: right !important;
+}
+.celebration-types {
+    padding: 5px ;
+    background-position: left .75rem center;
+}
+#indexMain .form-floating > label{
+    padding: 1rem 0rem !important;
+    left:unset !important;
+    right: 0 !important;
+}
+.modal{
+    direction: rtl;
+    text-align: right;
+}
+.modal .modal-header{
+    justify-content: space-between;
+}
+.celebrate-header h2 {
+    padding-bottom: 10px;
+    font-size: 3vh;
+}
+.celebrate-header p {
+    padding: 30px 0px;
+}
+.input-group-text,
+.input-group .LastName {
+    border-radius: 0 !important;
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -ms-border-radius: 0 !important;
+    -o-border-radius: 0 !important;
+}
+.input-group-text{
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+}
+.input-group .LastName{
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+}
+
+#video_timing_section .input-group{
+    direction: ltr;
+}
+#video_timing_section .input-group-text {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+/* index codes  end*/
+
+/* preview page codes */
+.alert{
+    flex-direction: row-reverse;
+}
+.hintBox svg {
+    margin-right: 0px !important;
+    margin-left: 10px;
+}
+.wrapper .Views{
+    left: unset;
+    right: 2px;
+}
+.celebrate-message p {
+    direction: rtl;
+}
+/* preview page codes end*/
+
+/* index youtube link accordion codes */
+.accordion-button::after {
+    margin-right: auto;
+    margin-left: unset;
+}
+.accordion-button svg{
+    margin-right: unset;
+    margin-left: 8px;
+}
+
+.form-check .form-check-input {
+    float: right;
+    margin-left: -1.5em;
+}
+
+.form-check .form-check-label{
+    margin-right: 25px;
+}
+/* index youtube link accordion codes end */

@@ -1,0 +1,41 @@
+<?php
+
+return[
+    'type_required' => 'Kutlama tipi seçimi zorunlu',
+    'type_numeric' => 'Bir hata oluştu',
+    'type_exists' => 'Seçtiğiniz kutlama tipi mevcut değildir',
+    'firstname_required' => 'Ad zorunlu',
+    'firstname_string' => 'Bir hata oluştu',
+    'lastname_required' => 'Soyad zorunlu',
+    'lastname_string' => 'Bir hata oluştu',
+    'message_required' => 'Mesaj zorunlu',
+    'message_string' => 'Bir hata oluştu',
+    'template_required' => 'Şablon seçimi zorunlu',
+    'template_numeric' => 'Bir hata oluştu',
+    'template_exists' => 'Seçilen şablon mevcut değildir',
+    'title' => 'Kutlama oluştur',
+    'special_features' => 'Özel ayrıcalıklar',
+    'new_features' => 'Yeni özellikler yakında kullanıma sunulacak.',
+    'recipients_name' => 'Alıcı ismi',
+    'first_name' => 'Ad',
+    'last_name' => 'Soyad',
+    'type_your_messsage' => 'Mesajınız',
+    'choose_your_template' => 'Şablonu seçiniz',
+    'create_button' => 'Oluştur',
+    'copy_button' => 'Kopyala',
+    'copy_and_send_this_link' => 'Arkadaşınızla kutlamak için bu bağlantıyı kopyalayıp gönderebilirsiniz.',
+    'all_rights_reserved' => 'Tüm haklar saklıdır',
+    'oops' => 'Hata!',
+    'check_the_information' => 'lütfen girdiğiniz bilgileri kontrol edin.',
+    'add_youtube_link' => 'Youtube linki ekle',
+    'by_adding_video_link_here' => 'Buraya bir video bağlantısı ekleyerek kutlama başladığında müziği otomatik olarak çalıştırılacaktır.',
+    'starts_at' => 'Başlangıç',
+    'min' => 'dakika',
+    'sec' => 'saniye',
+    'ends_at' => 'Bitiş',
+    'you_can_copy_link' => 'Bağlantıyı youtube video paylaşım bölümünden kopyalayabilirsiniz',
+    'i_dont_want_to_add_music' => 'Kutlamaya müzik eklemek istemiyorum',
+    'celebration_type' => 'Kutlama türü'
+
+];
+?>

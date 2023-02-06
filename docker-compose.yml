@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  server:
+    image: muhanedyahya/onlinecelebration-nginx:latest
+    # build: 
+    #   context: .
+    #   dockerfile: dockerfiles/nginx.dockerfile
+    ports:
+    - 8000:8080
+    environment:
+      MYSQL_ADDRESS: mysql
+    depends_on:
+      - mysql
+      - php
+      - phpmyadmin
+  php:
+    image: muhanedyahya/onlinecelebration-php:latest
+    # build: 
+    #   context: .
+    #   dockerfile: dockerfiles/php.dockerfile
+    links:
+      - mysql
+    environment:
+      MYSQL_ADDRESS: mysql
+  mysql:
+    image: muhanedyahya/onlinecelebration-mysql
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      - PMA_HOST=mysql
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    ports:
+    - "8080:80"
+  # utility containers used when needed
+  # composer:
+  #   build: 
+  #     context: .
+  #     dockerfile: dockerfiles/composer.dockerfile
+  # artisan:
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfiles/php.dockerfile
+  #   entrypoint: ["php","/var/www/html/artisan"]
+  # npm:
+  #   image: node:14
+  #   working_dir: /var/www/html
