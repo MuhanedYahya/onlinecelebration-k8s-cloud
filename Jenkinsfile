@@ -159,16 +159,16 @@
                 withKubeConfig([credentialsId: 'DOKS']) {
                     sh '''#!/bin/bash
                         echo "Checking Monitoring Secret and Configmaps if exists...";                        
-                        result=$(kubectl get secrets | grep prometheus-config)
+                        result=$(kubectl get configmaps | grep prometheus-config)
                         if [ -z "$result" ]; then
-                            echo "Prometheus Secret not found !!!";exit 1;
+                            echo "Prometheus Configmap not found !!!";exit 1;
                         else
-                            echo "Prometheus Secret exists.";
+                            echo "Prometheus Configmap exists.";
                         fi
 
-                        result=$(kubectl get configmaps | grep grafana-secret)
+                        result=$(kubectl get secrets | grep grafana-secret)
                         if [ -z "$result" ]; then
-                            echo "Grafana configmap not found !!!";exit 1;
+                            echo "Grafana Secret not found !!!";exit 1;
                         else
                             echo "Grafana Secret exists.";
                         fi
