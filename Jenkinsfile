@@ -40,7 +40,7 @@ pipeline {
 
                         # php image
                         echo "start building php image...";
-                        if docker build . -t muhanedyahya/onlinecelebration-php:rds -f dockerfiles/php.dockerfile;then
+                        if docker build . -t muhanedyahya/onlinecelebration-php:v2 -f dockerfiles/php.dockerfile;then
                             echo "php image successfully created.";
                             echo "pushing php image to DockerHub.....";
                                 if docker push muhanedyahya/onlinecelebration-php:rds;then
@@ -54,7 +54,7 @@ pipeline {
 
                         # nginx image
                         echo "start building nginx image...";
-                        if docker build . -t muhanedyahya/onlinecelebration-nginx:secret -f dockerfiles/nginx.dockerfile;then
+                        if docker build . -t muhanedyahya/onlinecelebration-nginx:v2 -f dockerfiles/nginx.dockerfile;then
                             echo "nginx image successfully created.";
                             echo "pushing nginx image to DockerHub.....";
                                 if docker push muhanedyahya/onlinecelebration-nginx:secret;then
