@@ -128,6 +128,7 @@ pipeline {
                                 echo "php pod restarting";
                                 kubectl rollout restart deployment/php-deployment;
                             else
+                                echo "Starting php deployment";
                                 kubectl apply -f kubernetes/php.yaml;
                             fi
 
@@ -136,19 +137,22 @@ pipeline {
                                 echo "php pod restarting";
                                 kubectl rollout restart deployment/nginx-deployment;
                             else
+                                echo "Starting php deployment";
                                 kubectl apply -f kubernetes/nginx.yaml;
                                 echo "----------------------------------------------------------------------";
-                                // to avoid database cached connection
-                                echo "running php artisan config:cache inside of php pod";
-                                pod_name=$(kubectl get pods -l app=onlinecelebration-php -o jsonpath='{.items[0].metadata.name}');
-                                if kubectl exec $pod_name -- php artisan config:cache;then 
-                                    echo "Application config cache cleared.";
-                                else 
-                                    echo "error in clearing cache !!";
-                                fi
+
                             fi
                         then 
-                            echo "Application deployed seccessfully on Kubernetes. :)";
+                            // to avoid database cached connection
+                            echo "running php artisan config:cache inside of php pod";
+                            pod_name=$(kubectl get pods -l app=onlinecelebration-php -o jsonpath='{.items[0].metadata.name}');
+                            if kubectl exec $pod_name -- php artisan config:cache;then 
+                                echo "Application config cache cleared.";
+                                echo "Application deployed seccessfully on Kubernetes. :)";
+                            else 
+                                echo "error in clearing cache !!";
+                            fi
+
                         else
                             echo "Error in deploying the application on kubernetes";exit 1;
                         fi
