@@ -3,15 +3,15 @@
 return [
     'en' => [
         'display' => 'En',
-        'src' => 'http://server/images/united-states.png'
+        'src' => $_ENV['server'] . '/images/united-states.png'
     ],
     'tr' => [
         'display' => 'Tr',
-        'src' => 'http://server/images/turkey.png'
+        'src' => $_ENV['server'] .'/images/turkey.png'
     ],
     'ar' => [
         'display' => 'Ar',
-        'src' => 'http://server/images/saudi-arabia.png'
+        'src' => $_ENV['server'] . '/images/saudi-arabia.png'
     ]
 
 ];

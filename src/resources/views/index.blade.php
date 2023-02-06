@@ -274,7 +274,8 @@
                     'lang' : "{{ app()->getLocale() }}"
                 },
                 success:function(data){
-                    window.location.replace(`http://${process.env.SERVER_SERVICE_HOST}/celebrations/` + data.id);
+                    var service_link=process.env.SERVER_SERVICE_HOST + "/celebrations/" + data.id;
+                    window.location.replace(service_link);
                 },
                 error:function(data){
                     // show alert box for error
