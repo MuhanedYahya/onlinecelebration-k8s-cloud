@@ -143,7 +143,7 @@ pipeline {
 
                             fi
                         then 
-                            // wait pods to be in running state
+                            // wait pods to be in running state.
                             php_pod_name=$(kubectl get pods -l app=onlinecelebration-php -o jsonpath='{.items[0].metadata.name}');
                             nginx_pod_name=$(kubectl get pods -l app=onlinecelebration-nginx -o jsonpath='{.items[0].metadata.name}');
                             kubectl wait --for=condition=Ready pods -l app=$php_pod_name;
@@ -152,7 +152,7 @@ pipeline {
                             echo "running php artisan config:cache inside of php pod";
                             if kubectl exec $php_pod_name -- php artisan config:cache;then 
                                 echo "Application config cache cleared.";
-                                echo "Application deployed seccessfully on Kubernetes. :)";
+                                echo "Application deployed seccessfully on Kubernetes.";
                             else 
                                 echo "error in clearing cache !!";
                             fi
