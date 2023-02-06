@@ -80,7 +80,7 @@ pipeline {
                 withKubeConfig([credentialsId: 'DOKS']) {
                     sh '''#!/bin/bash
                         echo "Checking Docker secret if exists so we can pull private images..";
-                        result=$(kubectl get secrets | grep docker-secret)
+                        result=$(kubectl get secrets | grep docker-secret);
                         if [ -z "$result" ]; then
                             echo "Docker Secret not found !!!";exit 1;
                         else
@@ -88,7 +88,7 @@ pipeline {
                         fi
                         echo "----------------------------------------------------------------------";
                         echo "Checking Application Secret and Configmaps if exists...";                        
-                        result=$(kubectl get secrets | grep laravel-secret)
+                        result=$(kubectl get secrets | grep laravel-secret);
                         if [ -z "$result" ]; then
                             echo "Application Secret not found !!!";
                             echo "please make sure you have the required secret before running the project.";exit 1;
@@ -96,7 +96,7 @@ pipeline {
                             echo "the Application has a Secret.";
                         fi
 
-                        result=$(kubectl get configmaps | grep laravel-configmap)
+                        result=$(kubectl get configmaps | grep laravel-configmap);
                         if [ -z "$result" ]; then
                             echo "Application configmap not found !!!";
                             echo "please make sure you have the required configmap before running the project.";exit 1;
