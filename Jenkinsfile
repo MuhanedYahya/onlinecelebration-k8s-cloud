@@ -143,11 +143,9 @@ pipeline {
 
                             fi
                         then 
-                            // wait pods to be in running state.
-                            kubectl wait --for=condition=Ready pods -l app=onlinecelebration-php;
-                            kubectl wait --for=condition=Ready pods -l app=onlinecelebration-nginx;
                             // to avoid database cached connection.
                             echo "running php artisan config:cache inside of php pod";
+                            // wait pods to be in running state.
                             sleep 20;
                             php_pod_name=$(kubectl get pods -l app=onlinecelebration-php -o jsonpath='{.items[0].metadata.name}');
                             if kubectl exec $php_pod_name -- php artisan config:cache;then 

@@ -274,7 +274,7 @@
                     'lang' : "{{ app()->getLocale() }}"
                 },
                 success:function(data){
-                    window.location.replace("http://server:8000/celebrations/" + data.id);
+                    window.location.replace(`http://${process.env.SERVER_SERVICE_HOST}/celebrations/` + data.id);
                 },
                 error:function(data){
                     // show alert box for error
