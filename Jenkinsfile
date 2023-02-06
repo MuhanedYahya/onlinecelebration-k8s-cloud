@@ -79,7 +79,7 @@
                 }
                 withKubeConfig([credentialsId: 'DOKS']) {
                     sh '''#!/bin/bash
-                        echo "Checking Docker secret if exists so we can pull private images...";
+                        echo "Checking Docker secret if exists so we can pull private images..";
                         if [ -z "$result" ]; then
                             echo "Docker Secret not found !!!";exit 1;
                         else
