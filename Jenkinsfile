@@ -126,7 +126,8 @@ pipeline {
                             status=$(kubectl get deployment php-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                             if [ "$status" == "True" ]; then
                                 echo "php pod restarting";
-                                kubectl rollout restart deployment/php-deployment;
+                                // kubectl rollout restart deployment/php-deployment;
+                                kubectl apply -f kubernetes/php.yaml;
                             else
                                 echo "Starting php deployment";
                                 kubectl apply -f kubernetes/php.yaml;
@@ -135,7 +136,8 @@ pipeline {
                             status=$(kubectl get deployment nginx-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                             if [ "$status" == "True" ]; then
                                 echo "php pod restarting";
-                                kubectl rollout restart deployment/nginx-deployment;
+                                // kubectl rollout restart deployment/nginx-deployment;
+                                kubectl apply -f kubernetes/nginx.yaml;
                             else
                                 echo "Starting php deployment";
                                 kubectl apply -f kubernetes/nginx.yaml;
