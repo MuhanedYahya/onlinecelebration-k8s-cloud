@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: onlinecelebration-php
-          image: muhanedyahya/onlinecelebration-php:v2
+          image: muhanedyahya/onlinecelebration-php:v3
           envFrom:
           - configMapRef:
               name: laravel-configmap
