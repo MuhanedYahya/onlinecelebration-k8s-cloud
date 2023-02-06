@@ -40,7 +40,7 @@ pipeline {
 
                         # php image
                         echo "start building php image...";
-                        if docker build . -t muhanedyahya/onlinecelebration-php:v3 -f dockerfiles/php.dockerfile;then
+                        if docker build . -t muhanedyahya/onlinecelebration-php:v3 -f dockerfiles/php.dockerfile --no-cache;then
                             echo "php image successfully created.";
                             echo "pushing php image to DockerHub.....";
                                 if docker push muhanedyahya/onlinecelebration-php:v3;then
@@ -54,7 +54,7 @@ pipeline {
 
                         # nginx image
                         echo "start building nginx image...";
-                        if docker build . -t muhanedyahya/onlinecelebration-nginx:v3 -f dockerfiles/nginx.dockerfile;then
+                        if docker build . -t muhanedyahya/onlinecelebration-nginx:v3 -f dockerfiles/nginx.dockerfile --no-cache;then
                             echo "nginx image successfully created.";
                             echo "pushing nginx image to DockerHub.....";
                                 if docker push muhanedyahya/onlinecelebration-nginx:v3;then
