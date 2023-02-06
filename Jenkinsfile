@@ -144,7 +144,7 @@ pipeline {
                                 kubectl exec $pod_name -- php artisan config:cache;
                             fi
                         then 
-                            echo "Application deployed seccessfully on Kubernetes.";
+                            echo "Application deployed seccessfully on Kubernetes. :)";
                         else
                             echo "Error in deploying the application on kubernetes";exit 1;
                         fi
