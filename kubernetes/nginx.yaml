@@ -6,14 +6,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: onlinecelebration
+      app: onlinecelebration-nginx
   template:
     metadata:
       labels:
-        app: onlinecelebration
+        app: onlinecelebration-nginx
     spec:
       containers:
-        - name: nginx-pod
+        - name: onlinecelebration-nginx
           image: muhanedyahya/onlinecelebration-nginx:v2
           envFrom:
           - configMapRef:
