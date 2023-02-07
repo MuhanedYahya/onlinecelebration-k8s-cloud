@@ -277,7 +277,7 @@
                     'lang' : "{{ app()->getLocale() }}"
                 },
                 success:function(data){
-                    
+                    alert(data.env);
                     window.location.replace(data.env + "/celebrations/" + data.id);
                 },
                 error:function(data){
