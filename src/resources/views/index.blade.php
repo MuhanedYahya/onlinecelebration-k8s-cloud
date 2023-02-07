@@ -257,14 +257,14 @@
             var selected_Svg =$(".templates-row").find("svg:visible");
             var selected_image= selected_Svg.parent().find("img");
             var template=selected_image.attr('id');
-            var service_link= process.env.SERVER_SERVICE_HOST;
+            var mainUrl= window.location.origin;
 
             
             $.ajax({
                 url:"{{ route('celebrations.store') }}",
                 type:"POST",
                 data:{
-                    "env": service_link,
+                    "mainUrl": mainUrl,
                     "_token": "{{ csrf_token() }}",
                     'type' : type,
                     'FirstName' : FirstName,
@@ -278,7 +278,7 @@
                 },
                 success:function(data){
                     alert(data.env);
-                    window.location.replace(data.env + "/celebrations/" + data.id);
+                    window.location.replace(data.mainUrl + "/celebrations/" + data.id);
                 },
                 error:function(data){
                     // show alert box for error

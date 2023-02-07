@@ -208,6 +208,7 @@ pipeline {
                             status=$(kubectl get deployment prometheus-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                             if [ "$status" == "True" ]; then
                                 echo "Prometheus already exists.";
+                                kubectl apply -f kubernetes/prometheus.yaml;
                             else
                                 echo "Prometheus deployment not found. We will apply the deployment now ...";
                                 kubectl apply -f kubernetes/prometheus.yaml;
@@ -216,6 +217,7 @@ pipeline {
                                 status=$(kubectl get deployment grafana-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                                 if [ "$status" == "True" ]; then
                                     echo "grafana already exists.";
+                                    kubectl apply -f kubernetes/grafana.yaml;
                                 else
                                     echo "Prometheus deployment not found. We will apply the deployment now ...";
                                     kubectl apply -f kubernetes/grafana.yaml;
