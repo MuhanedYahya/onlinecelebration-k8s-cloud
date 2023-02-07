@@ -277,8 +277,13 @@
                     'lang' : "{{ app()->getLocale() }}"
                 },
                 success:function(data){
-                    var url = data.mainUrl + "/celebrations/" + data.id;
-                    window.location.replace(url);
+                    console.log(data.mainUrl);
+                    console.log(data.mainUrl);
+                    var urlC = data.mainUrl + "/celebrations/" + data.id;
+                    var url = data.mainUrl + "/" + data.id;
+                    console.log(urlC);
+                    console.log(url);
+                    // window.location.replace(url);
                 },
                 error:function(data){
                     // show alert box for error
