@@ -21,5 +21,12 @@ spec:
           - secretRef:
               name: laravel-secret
           imagePullPolicy: Always
+          volumeMounts:
+            - name: nfs-volume
+              mountPath: /var/www/html/public/images
       imagePullSecrets:
         - name: docker-secret
+      volumes:
+        - name: nfs-volume
+          persistentVolumeClaim:
+            claimName: nfs-pvc

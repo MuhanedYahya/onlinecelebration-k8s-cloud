@@ -40,10 +40,10 @@ pipeline {
 
                         # php image
                         echo "start building php image...";
-                        if docker build . -t muhanedyahya/onlinecelebration-php:v3 -f dockerfiles/php.dockerfile --no-cache;then
+                        if docker build . -t muhanedyahya/onlinecelebration-php:v4 -f dockerfiles/php.dockerfile --no-cache;then
                             echo "php image successfully created.";
                             echo "pushing php image to DockerHub.....";
-                                if docker push muhanedyahya/onlinecelebration-php:v3;then
+                                if docker push muhanedyahya/onlinecelebration-php:v4;then
                                     echo "php image pushed seccessfully.";
                                 else
                                     echo "error error occurred while pushing php image!!! something went wrong";exit 1;
@@ -54,10 +54,10 @@ pipeline {
 
                         # nginx image
                         echo "start building nginx image...";
-                        if docker build . -t muhanedyahya/onlinecelebration-nginx:v3 -f dockerfiles/nginx.dockerfile --no-cache;then
+                        if docker build . -t muhanedyahya/onlinecelebration-nginx:v4 -f dockerfiles/nginx.dockerfile --no-cache;then
                             echo "nginx image successfully created.";
                             echo "pushing nginx image to DockerHub.....";
-                                if docker push muhanedyahya/onlinecelebration-nginx:v3;then
+                                if docker push muhanedyahya/onlinecelebration-nginx:v4;then
                                     echo "nginx image pushed seccessfully.";
                                 else
                                     echo "error error occurred while pushing nginx image!!! something went wrong";exit 1;
@@ -118,7 +118,15 @@ pipeline {
                         else
                             echo "Service 'server' does not exist. We will expose the service now ...";
                             kubectl apply -f kubernetes/nginx-service.yaml;
-                        fi    
+                        fi
+                        echo "----------------------------------------------------------------------";
+                        echo "Checking Volume requirements exists....";   
+                        status=$(kubectl get deployment nfs-client-provisioner -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
+                        if [ "$status" == "True" ]; then
+                            echo "Volume is set.";
+                        else
+                            echo "ss is not set, you need to check it immediately!!";exit 1;
+                        fi 
 
                         echo "----------------------------------------------------------------------";
                         echo "Running the app in kubernetes...";
@@ -142,7 +150,6 @@ pipeline {
                                 echo "Starting php deployment";
                                 kubectl apply -f kubernetes/nginx.yaml;
                                 echo "----------------------------------------------------------------------";
-
                             fi
                         then 
                             // to avoid database cached connection.
