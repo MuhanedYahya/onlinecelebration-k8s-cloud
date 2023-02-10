@@ -14,12 +14,19 @@ spec:
     spec:
       containers:
         - name: onlinecelebration-nginx
-          image: muhanedyahya/onlinecelebration-nginx:v3
+          image: muhanedyahya/onlinecelebration-nginx:v5
           envFrom:
           - configMapRef:
               name: laravel-configmap
           - secretRef:
               name: laravel-secret
           imagePullPolicy: Always
+          volumeMounts:
+            - name: nfs-volume
+              mountPath: /var/www/html/public/images
       imagePullSecrets:
         - name: docker-secret
+      volumes:
+        - name: nfs-volume
+          persistentVolumeClaim:
+            claimName: nfs-pvc
