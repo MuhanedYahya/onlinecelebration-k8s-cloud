@@ -35,7 +35,7 @@ class CelebrateController extends Controller
                 'FirstName' => $request->FirstName,
                 'LastName' => $request->LastName,
                 'Message' => $request->Message,
-                'PageLink' => "www.online-celebration/" . time() . "/" . $request->FirstName .  $request->LastName ,
+                'PageLink' => "www.piplineapp.live/" . time() . "/" . $request->FirstName .  $request->LastName ,
                 'Lang' => $request->lang,
                 'TemplateID' => $request->template,
                 'TypeID' => $request->type,
