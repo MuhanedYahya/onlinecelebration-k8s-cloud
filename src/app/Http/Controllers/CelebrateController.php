@@ -71,7 +71,7 @@ class CelebrateController extends Controller
     }
 
     public function visit($id , $name){
-        $celebrate = Creator::with('type','template')->where('PageLink','www.online-celebration/' . $id .'/' . $name)->get()->first();
+        $celebrate = Creator::with('type','template')->where('PageLink','www.piplineapp.live/' . $id .'/' . $name)->get()->first();
 
         if($celebrate){
              return view('celebration',compact('celebrate'));

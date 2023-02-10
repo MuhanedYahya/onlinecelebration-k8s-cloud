@@ -3,15 +3,15 @@
 return [
     'en' => [
         'display' => 'En',
-        'src' => 'http://localhost/images/united-states.png'
+        'src' => 'http://piplineapp.live/images/united-states.png'
     ],
     'tr' => [
         'display' => 'Tr',
-        'src' => 'http://localhost/images/turkey.png'
+        'src' => 'http://piplineapp.live/images/turkey.png'
     ],
     'ar' => [
         'display' => 'Ar',
-        'src' => 'http://localhost/images/saudi-arabia.png'
+        'src' => 'http://piplineapp.live/images/saudi-arabia.png'
     ]
 
 ];
