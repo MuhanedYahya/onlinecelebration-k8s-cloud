@@ -40,10 +40,10 @@ pipeline {
 
                         # php image
                         echo "start building php image...";
-                        if docker build . -t muhanedyahya/onlinecelebration-php:v5 -f dockerfiles/php.dockerfile --no-cache;then
+                        if docker build . -t muhanedyahya/onlinecelebration-php:v6 -f dockerfiles/php.dockerfile --no-cache;then
                             echo "php image successfully created.";
                             echo "pushing php image to DockerHub.....";
-                                if docker push muhanedyahya/onlinecelebration-php:v5;then
+                                if docker push muhanedyahya/onlinecelebration-php:v6;then
                                     echo "php image pushed seccessfully.";
                                 else
                                     echo "error error occurred while pushing php image!!! something went wrong";exit 1;
@@ -54,10 +54,10 @@ pipeline {
 
                         # nginx image
                         echo "start building nginx image...";
-                        if docker build . -t muhanedyahya/onlinecelebration-nginx:v5 -f dockerfiles/nginx.dockerfile --no-cache;then
+                        if docker build . -t muhanedyahya/onlinecelebration-nginx:v6 -f dockerfiles/nginx.dockerfile --no-cache;then
                             echo "nginx image successfully created.";
                             echo "pushing nginx image to DockerHub.....";
-                                if docker push muhanedyahya/onlinecelebration-nginx:v5;then
+                                if docker push muhanedyahya/onlinecelebration-nginx:v6;then
                                     echo "nginx image pushed seccessfully.";
                                 else
                                     echo "error error occurred while pushing nginx image!!! something went wrong";exit 1;
