@@ -2,31 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="#">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ secure_secure_asset('css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
 
     @if( app()->getLocale()  == "ar")
-    <link rel="stylesheet" href="{{ asset('css/ar.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/ar.css') }}">
     @elseif( app()->getLocale() == "tr")
-    <link rel="stylesheet" href="{{ asset('css/tr.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/tr.css') }}">
     @endif
 
     <title>Online Celebration</title>
-    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ secure_asset('images/logo.png') }}" type="image/x-icon">
     <!-- jquery included -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- confetti include -->
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <!-- bootstrap files -->
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/all.min.js') }}"></script>
+    <script src="{{ secure_asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ secure_asset('js/all.min.js') }}"></script>
     <!-- custome functions -->
-    <script src="{{ asset('js/function.js') }}"></script>
+    <script src="{{ secure_asset('js/function.js') }}"></script>
     <!-- aos include -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- catdad confetti include -->
@@ -57,7 +56,7 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col">
                     <a class="navbar-brand d-flex align-items-center" href="{{ route('celebrations.create') }}">
-                        <img src="{{ asset('images/logo.png') }}" alt="logo" width="50" height="50" >
+                        <img src="{{ secure_asset('images/logo.png') }}" alt="logo" width="50" height="50" >
                         <div class="ps-3 brandName">
                             Online Celebration
                         </div>

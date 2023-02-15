@@ -7,7 +7,7 @@
         <div class="row align-items-center justify-content-sm-around">
             <!-- template codes -->
             <div class="col-12 col-md-5 position-relative imageContainer">
-                <img src="{{ asset('images/' . $celebrate->template->name) }}" alt="template" class="card-img overflow-hidden">
+                <img src="{{ secure_asset('images/' . $celebrate->template->name) }}" alt="template" class="card-img overflow-hidden">
                 <div class="imageContent d-flex flex-column justify-content-center align-items-center text-center">
                     <div class="celebrate-header">
                         <h2>{{ $celebrate->created_at->format('d/m/Y') }}</h2>

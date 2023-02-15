@@ -88,7 +88,7 @@
                             <div class="col-4 col-lg-3 mt-2 mb-4">
                                 <div class="wrapper d-flex justify-content-center align-items-center">
                                     <i class="fa-solid fa-circle-check" id="checked"></i>
-                                    <img src="{{ asset('images/' . $template->name) }}" class="card-img rounded" alt="image" id="{{ $template->id }}">
+                                    <img src="{{ secure_asset('images/' . $template->name) }}" class="card-img rounded" alt="image" id="{{ $template->id }}">
                                     <div class="Views d-flex justify-content-center align-items-center">
                                         <p>
                                             <i class="fa-solid fa-eye"></i>
