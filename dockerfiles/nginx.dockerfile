@@ -14,6 +14,6 @@ WORKDIR /var/www/html
 
 COPY --from=build /var/www/html .
 
-EXPOSE 443
+EXPOSE 80
 
 
