@@ -261,6 +261,7 @@
             $.ajax({
                 url:"{{ route('celebrations.store') }}",
                 type:"POST",
+                url:"https://piplineapp.live/celebrations",
                 data:{
                     "_token": "{{ csrf_token() }}",
                     'type' : type,
