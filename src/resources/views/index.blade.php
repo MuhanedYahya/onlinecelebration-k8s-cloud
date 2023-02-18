@@ -261,7 +261,6 @@
             $.ajax({
                 url:"{{ route('celebrations.store') }}",
                 type:"POST",
-                url:"https://piplineapp.live/celebrations",
                 data:{
                     "_token": "{{ csrf_token() }}",
                     'type' : type,
@@ -275,7 +274,8 @@
                     'lang' : "{{ app()->getLocale() }}"
                 },
                 success:function(data){
-                    window.location.replace(data.id);
+                    // window.location.replace(data.id);
+                    window.location.replace("https://piplineapp.live" + "/celebrations/" + data.id);
                 },
                 error:function(data){
                     // show alert box for error
