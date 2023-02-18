@@ -53,7 +53,7 @@ pipeline {
                         fi
 
                         # nginx image
-                        echo "start building nginx image...";
+                        echo "start building nginx image..";
                         if docker build . -t muhanedyahya/onlinecelebration-nginx:v6 -f dockerfiles/nginx.dockerfile --no-cache;then
                             echo "nginx image successfully created.";
                             echo "pushing nginx image to DockerHub.....";
