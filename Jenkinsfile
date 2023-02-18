@@ -157,7 +157,7 @@ pipeline {
                             // wait pods to be in running state.
                             sleep 20;
                             php_pod_name=$(kubectl get pods -l app=onlinecelebration-php -o jsonpath='{.items[0].metadata.name}');
-                            if kubectl exec $php_pod_name -- php artisan config:cache;then 
+                            if kubectl exec $php_pod_name -- php artisan optimize;then 
                                 echo "Application config cache cleared.";
                                 echo "Application deployed seccessfully on Kubernetes.";
                             else 
