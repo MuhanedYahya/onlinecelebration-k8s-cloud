@@ -143,7 +143,7 @@ pipeline {
 
                             status=$(kubectl get deployment nginx-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                             if [ "$status" == "True" ]; then
-                                echo "php pod restarting";
+                                echo "nginx pod restarting";
                                 kubectl apply -f kubernetes/nginx.yaml;
                                 kubectl rollout restart deployment/nginx-deployment;
                             else
