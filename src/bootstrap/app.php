@@ -52,4 +52,27 @@ $app->singleton(
 |
 */
 
+// Laravel Prometheus metrics exporter ##########################################
+$userAliases = [
+    Arquivei\LaravelPrometheusExporter\PrometheusFacade::class => 'Prometheus',
+];
+$app->withFacades(true, $userAliases);
+
+$app->register(Arquivei\LaravelPrometheusExporter\PrometheusServiceProvider::class);
+// will export this metrics
+// application routes metrics
+$app->middleware([
+    Arquivei\LaravelPrometheusExporter\RouteMiddleware::class,
+]);
+
+// Guzzle metrics
+$app->register(Arquivei\LaravelPrometheusExporter\GuzzleServiceProvider::class);
+
+// SQL metrics,
+$app->register(Arquivei\LaravelPrometheusExporter\DatabaseServiceProvider::class);
+
+
+// Laravel Prometheus metrics exporter end ##########################################
+
+
 return $app;
