@@ -6,6 +6,8 @@ COPY src .
 
 RUN composer install
 
+RUN composer require promphp/prometheus_client_php
+
 FROM php:8.1-fpm-alpine
  
 WORKDIR /var/www/html

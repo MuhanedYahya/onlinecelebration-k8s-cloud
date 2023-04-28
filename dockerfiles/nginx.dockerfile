@@ -6,6 +6,8 @@ COPY src .
 
 RUN composer install
 
+RUN composer require promphp/prometheus_client_php
+
 FROM nginx:stable-alpine
 
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
