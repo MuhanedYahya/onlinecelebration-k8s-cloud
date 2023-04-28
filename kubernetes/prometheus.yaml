@@ -17,11 +17,6 @@ spec:
         image: bitnami/prometheus
         ports:
         - containerPort: 9090
-        env:
-        - name: PROMETHEUS_ADDRESS
-          value: "prometheus-service.default"
-        - name: JENKINS_ADDRESS
-          value: "143.198.77.178:8080"
         volumeMounts:
         - name: config
           mountPath: /etc/prometheus/prometheus.yml

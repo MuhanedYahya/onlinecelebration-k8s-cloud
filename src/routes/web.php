@@ -26,3 +26,6 @@ Route::group(['middleware' => 'language'],function(){
     Route::Post('changelang',[CelebrateController::class,'changeLang'])->name('changeLanguage');
 
 });
+
+// Prometheus Route
+Route::get('metrics',[PrometheusController::class,'index']);

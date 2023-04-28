@@ -216,6 +216,7 @@ pipeline {
                             if [ "$status" == "True" ]; then
                                 echo "Prometheus already exists.";
                                 kubectl apply -f kubernetes/prometheus.yaml;
+                                kubectl rollout restart deployment/prometheus-deployment;
                             else
                                 echo "Prometheus deployment not found. We will apply the deployment now ...";
                                 kubectl apply -f kubernetes/prometheus.yaml;
@@ -225,6 +226,7 @@ pipeline {
                                 if [ "$status" == "True" ]; then
                                     echo "grafana already exists.";
                                     kubectl apply -f kubernetes/grafana.yaml;
+                                    kubectl rollout restart deployment/grafana-deployment;
                                 else
                                     echo "Prometheus deployment not found. We will apply the deployment now ...";
                                     kubectl apply -f kubernetes/grafana.yaml;
