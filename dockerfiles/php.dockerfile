@@ -3,10 +3,8 @@ FROM composer as build
 WORKDIR /var/www/html
 
 COPY src .
-
-RUN composer install
-
 RUN composer require promphp/prometheus_client_php
+RUN composer install
 
 FROM php:8.1-fpm-alpine
  

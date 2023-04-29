@@ -4,9 +4,8 @@ WORKDIR /var/www/html
 
 COPY src .
 
-RUN composer install
-
 RUN composer require promphp/prometheus_client_php
+RUN composer install
 
 FROM nginx:stable-alpine
 
