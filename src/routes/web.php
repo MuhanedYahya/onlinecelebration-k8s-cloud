@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CelebrateController;
-
+use App\Http\Controllers\PrometheusController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,8 @@ use App\Http\Controllers\CelebrateController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('metrics',[PrometheusController::class,'index']);
 
 Route::group(['middleware' => 'language'],function(){
     Route::get('/', function () {
@@ -27,5 +29,4 @@ Route::group(['middleware' => 'language'],function(){
 
 });
 
-// Prometheus Route
-Route::get('metrics',[PrometheusController::class,'index']);
+
