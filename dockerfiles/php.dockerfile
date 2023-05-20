@@ -4,7 +4,7 @@ WORKDIR /var/www/html
 
 COPY src .
 # install vendor with composer
-RUN composer install
+RUN composer update
 
 # require laravel metric exporter
 RUN composer require promphp/prometheus_client_php
