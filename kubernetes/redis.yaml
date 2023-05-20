@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: redis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: onlinecelebration-redis
+  template:
+    metadata:
+      labels:
+        app: onlinecelebration-redis
+    spec:
+      containers:
+        - name: onlinecelebration-redis
+          image: redis:latest

@@ -131,6 +131,14 @@ pipeline {
                         echo "----------------------------------------------------------------------";
                         echo "Running the app in kubernetes...";
                         if
+                            status=$(kubectl get deployment redis-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
+                            if [ "$status" == "True" ]; then
+                                echo "redis pod restarting";
+                                kubectl apply -f kubernetes/redis.yaml;
+                            else
+                                echo "Starting redis deployment";
+                                kubectl apply -f kubernetes/php.yaml;
+                            fi
                             status=$(kubectl get deployment php-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                             if [ "$status" == "True" ]; then
                                 echo "php pod restarting";

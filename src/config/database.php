@@ -126,6 +126,11 @@ return [
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
             'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            // Enable query logging
+            \PDO::ATTR_EMULATE_PREPARES => true,
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+            \PDO::ATTR_STATEMENT_CLASS => [\Illuminate\Database\Query\Statement::class],
         ],
 
         'default' => [

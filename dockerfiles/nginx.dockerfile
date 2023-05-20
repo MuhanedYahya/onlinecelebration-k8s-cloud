@@ -3,7 +3,10 @@ FROM composer as build
 WORKDIR /var/www/html
 
 COPY src .
+# install vendor with composer
+RUN composer install
 
+# require laravel metric exporter
 RUN composer require promphp/prometheus_client_php
 
 FROM nginx:stable-alpine
