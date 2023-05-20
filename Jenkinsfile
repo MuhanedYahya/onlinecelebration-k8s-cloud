@@ -106,6 +106,13 @@ pipeline {
 
                         echo "----------------------------------------------------------------------";
                         echo "Checking Services if exists....";
+                         if kubectl get service redis -n default &> /dev/null; then
+                            echo "Service 'redis' exists.";
+                        else
+                            echo "Service 'redis' does not exist. We will expose the service now ...";
+                            kubectl apply -f kubernetes/redis-service.yaml;
+                        fi
+
                         if kubectl get service php -n default &> /dev/null; then
                             echo "Service 'php' exists.";
                         else
@@ -137,7 +144,7 @@ pipeline {
                                 kubectl apply -f kubernetes/redis.yaml;
                             else
                                 echo "Starting redis deployment";
-                                kubectl apply -f kubernetes/php.yaml;
+                                kubectl apply -f kubernetes/redis.yaml;
                             fi
                             status=$(kubectl get deployment php-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                             if [ "$status" == "True" ]; then
