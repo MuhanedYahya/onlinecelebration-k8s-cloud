@@ -14,8 +14,6 @@ use App\Http\Controllers\MetricsController;
 |
 */
 
-
-
 Route::group(['middleware' => 'language'],function(){
     Route::get('/', function () {
         return redirect()->route('celebrations.create');

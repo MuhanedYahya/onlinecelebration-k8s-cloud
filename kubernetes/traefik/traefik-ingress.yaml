@@ -14,14 +14,14 @@ spec:
           port: 80
       middlewares:
         - name: https-redirect
-    - match: Host(`piplineapp.live`) && PathPrefix(`/grafana`)
+    - match: Host(`grafana.piplineapp.live`)
       kind: Rule
       services:
         - name: grafana-service
           port: 3000
       middlewares:
         - name: https-redirect
-    - match: Host(`piplineapp.live`) && PathPrefix(`/prometheus`)
+    - match: Host(`prometheus.piplineapp.live`)
       kind: Rule
       services:
         - name: grafana-service

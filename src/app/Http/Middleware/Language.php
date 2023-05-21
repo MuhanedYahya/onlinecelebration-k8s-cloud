@@ -19,7 +19,6 @@ class Language
     {
 
         // enable database query log
-        DB::connection()->enableQueryLog();
 
         // get Route name , HTTP method and HTTP status code
         $response = $next($request);
@@ -50,6 +49,8 @@ class Language
             ['method' => $method, 'http_status_code' => $statusCode]
         );
 
+        // enable database query log
+        DB::connection()->enableQueryLog();
 
         // Application codes
         if (Session()->has('applocale') AND array_key_exists(Session()->get('applocale'), config('languages'))) {
