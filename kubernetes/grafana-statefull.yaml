@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: grafana-csi
+spec:
+  selector:
+    matchLabels:
+      app: grafana-csi
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: grafana-csi
+    spec:
+      containers:
+      - name: grafana-csi
+        image: busybox
+        args:
+        - sleep
+        - infinity
+        volumeMounts:
+        - mountPath: "/grafana-data"
+          name: csi-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: csi-pvc
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+      storageClassName: do-block-storage 

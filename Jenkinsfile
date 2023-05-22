@@ -135,7 +135,7 @@ pipeline {
                             echo "ss is not set, you need to check it immediately!!";exit 1;
                         fi 
 
-                        if kubectl get pvc grafana-host-pvc >/dev/null 2>&1; then
+                        if kubectl get pvc csi-pvc-grafana-csi-0 >/dev/null 2>&1; then
                             echo "grafana volume exists..."
                         else
                             echo "grafana volume does not exist!!! grafana dashboard won't be ready without volume. ";

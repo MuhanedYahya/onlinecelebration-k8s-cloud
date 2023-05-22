@@ -13,22 +13,30 @@ spec:
         app: grafana
     spec:
       containers:
-      - name: grafana
-        image: grafana/grafana
-        ports:
-        - containerPort: 3000
-        env:
-        - name: GF_DATASOURCES_DEFAULT_URL
-          value: "https://prometheus.piplineapp.live"
-        - name: GF_DATASOURCES_DEFAULT_ACCESS
-          value: proxy
+        - name: grafana
+          image: grafana/grafana
+          ports:
+          - containerPort: 3000
+          env:
+          - name: GF_DATASOURCES_DEFAULT_URL
+            value: "https://prometheus.piplineapp.live"
+          - name: GF_DATASOURCES_DEFAULT_ACCESS
+            value: proxy
+          envFrom:
+          - secretRef:
+              name: grafana-secret
           volumeMounts:
-            - mountPath: /var/lib/grafana
+            - mountPath: "/var/lib/grafana"
               name: grafana-volume
-        envFrom:
-        - secretRef:
-            name: grafana-secret
-      volumes: 
+      # this is for using busybox as a persistentVolumeClaim (busybox defined in grafana-statefull.yaml)
+      initContainers:
+      - name: grafana-data-permission-fix
+        image: busybox
+        command: ["/bin/chmod","-R","777", "/grafana-data"]
+        volumeMounts:
+        - name: grafana-volume
+          mountPath: /grafana-data
+      volumes:
         - name: grafana-volume
           persistentVolumeClaim:
-            claimName: grafana-host-pvc
+            claimName: csi-pvc-grafana-csi-0
