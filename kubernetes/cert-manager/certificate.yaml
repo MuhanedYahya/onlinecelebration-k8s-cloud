@@ -6,7 +6,8 @@ spec:
   secretName: pipeline-cert-secret
   dnsNames:
     - "piplineapp.live"
-    - "*.piplineapp.live"
+    - "grafana.piplineapp.live"
+    - "prometheus.piplineapp.live"
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
