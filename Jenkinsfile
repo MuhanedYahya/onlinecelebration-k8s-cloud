@@ -135,6 +135,13 @@ pipeline {
                             echo "ss is not set, you need to check it immediately!!";exit 1;
                         fi 
 
+                        if kubectl get pvc grafana-host-pvc >/dev/null 2>&1; then
+                            echo "grafana volume exists..."
+                        else
+                            echo "grafana volume does not exist!!! grafana dashboard won't be ready without volume. ";
+                        fi
+
+
                         echo "----------------------------------------------------------------------";
                         echo "Running the app in kubernetes...";
                         if
@@ -145,6 +152,7 @@ pipeline {
                             else
                                 echo "Starting redis deployment";
                                 kubectl apply -f kubernetes/redis.yaml;
+                                kubectl rollout restart deployment/redis-deployment;
                             fi
                             status=$(kubectl get deployment php-deployment -o jsonpath='{.status.conditions[?(@.type=="Available")].status}' 2>/dev/null)
                             if [ "$status" == "True" ]; then

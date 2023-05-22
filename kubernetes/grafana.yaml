@@ -19,9 +19,16 @@ spec:
         - containerPort: 3000
         env:
         - name: GF_DATASOURCES_DEFAULT_URL
-          value: "prometheus-service.default:9090"
+          value: "https://prometheus.piplineapp.live"
         - name: GF_DATASOURCES_DEFAULT_ACCESS
           value: proxy
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: grafana-volume
         envFrom:
         - secretRef:
             name: grafana-secret
+      volumes: 
+        - name: grafana-volume
+          persistentVolumeClaim:
+            claimName: grafana-host-pvc
