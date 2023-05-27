@@ -19,9 +19,19 @@ spec:
           - containerPort: 3000
           env:
           - name: GF_DATASOURCES_DEFAULT_URL
-            value: "https://prometheus.piplineapp.live"
+            value: "http://prometheus-service:9090"
           - name: GF_DATASOURCES_DEFAULT_ACCESS
             value: proxy
+          - name: GF_SMTP_ENABLED
+            value: "true"
+          - name: GF_SMTP_HOST
+            value: "smtp.gmail.com:465"
+          - name: GF_SMTP_FROM_ADDRESS
+            value: "yahya.muhaned@gmail.com"
+          - name: GF_SMTP_SKIP_VERIFY
+            value: "true"
+          - name: GF_SMTP_USER
+            value: "yahya.muhaned@gmail.com"
           envFrom:
           - secretRef:
               name: grafana-secret
@@ -34,9 +44,18 @@ spec:
         image: busybox
         command: ["/bin/chmod","-R","777", "/grafana-data"]
         volumeMounts:
+        - name: config
+          mountPath: "/etc/grafana/grafana.ini"
+          subPath: grafana.ini
         - name: grafana-volume
           mountPath: /grafana-data
+
       volumes:
+          # grafana.ini configmap
+        - name: config
+          configMap:
+            name: grafana-config
+            # persistent volume
         - name: grafana-volume
           persistentVolumeClaim:
             claimName: csi-pvc-grafana-csi-0

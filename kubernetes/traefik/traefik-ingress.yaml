@@ -41,28 +41,26 @@ spec:
       - main: piplineapp.live
         sans:
           - grafana.piplineapp.live
-
 ---
-
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: traefik-ingress-prometheus
-spec:
-  entryPoints:
-    - websecure
-    - web
-  routes:
-    - kind: Rule
-      match: Host(`prometheus.piplineapp.live`)
-      services:
-        - name: prometheus-service
-          port: 9090
-      middlewares:
-        - name: https-redirect
-  tls:
-    certResolver: letsencrypt
-    domains:
-      - main: piplineapp.live
-        sans:
-          - prometheus.piplineapp.live
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: traefik-ingress-prometheus
+# spec:
+#   entryPoints:
+#     - websecure
+#     - web
+#   routes:
+#     - kind: Rule
+#       match: Host(`prometheus.piplineapp.live`)
+#       services:
+#         - name: prometheus-service
+#           port: 9090
+#       middlewares:
+#         - name: https-redirect
+#   tls:
+#     certResolver: letsencrypt
+#     domains:
+#       - main: piplineapp.live
+#         sans:
+#           - prometheus.piplineapp.live
