@@ -28,4 +28,4 @@ Route::group(['middleware' => 'language'],function(){
 });
 
 // metrics route
-Route::get('/metrics', App\Http\Controllers\MetricsController::class);
+Route::middleware(['metrics'])->get('/metrics', App\Http\Controllers\MetricsController::class);
