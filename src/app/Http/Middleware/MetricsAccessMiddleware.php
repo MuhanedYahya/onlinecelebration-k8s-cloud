@@ -6,7 +6,7 @@ use Closure;
 
 class MetricsAccessMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
         $allowedDomain =env('METRICS_ALLOWED_DOMAIN');
 
