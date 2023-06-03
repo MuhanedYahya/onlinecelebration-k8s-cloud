@@ -11,7 +11,7 @@ class MetricsAccessMiddleware
         $allowedDomain =env('METRICS_ALLOWED_DOMAIN');
 
         if ($request->getHost() !== $allowedDomain) {
-            abort(403, 'Unauthorized.');
+            return view('errors.404');
         }
 
         return $next($request);
