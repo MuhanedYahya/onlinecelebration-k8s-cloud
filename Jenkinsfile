@@ -218,7 +218,7 @@ pipeline {
 
                         echo "----------------------------------------------------------------------";
                         echo "Checking Monitoring Services if exists....";
-                        if kubectl get service prometheus-service -n default &> /dev/null; then
+                        if kubectl get service prometheus -n default &> /dev/null; then
                             echo "Prometheus Service exists.";
                         else
                             echo "Prometheus Service does not exist. We will expose the service now ...";
