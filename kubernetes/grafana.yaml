@@ -44,18 +44,10 @@ spec:
         image: busybox
         command: ["/bin/chmod","-R","777", "/grafana-data"]
         volumeMounts:
-        - name: config
-          mountPath: "/etc/grafana/grafana.ini"
-          subPath: grafana.ini
         - name: grafana-volume
           mountPath: /grafana-data
-
       volumes:
-          # grafana.ini configmap
-        - name: config
-          configMap:
-            name: grafana-config
-            # persistent volume
+        # persistent volume
         - name: grafana-volume
           persistentVolumeClaim:
             claimName: csi-pvc-grafana-csi-0
