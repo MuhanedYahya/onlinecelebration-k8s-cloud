@@ -13,6 +13,11 @@
     @elseif( app()->getLocale() == "tr")
     <link rel="stylesheet" href="{{ asset('css/tr.css') }}">
     @endif
+    <!-- clear cache -->
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
 
     <title>Online Celebration</title>
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
