@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: onlinecelebration-php
-          image: muhanedyahya/onlinecelebration-php:monitor
+          image: muhanedyahya/onlinecelebration-php:latest
           envFrom:
           - configMapRef:
               name: laravel-configmap
