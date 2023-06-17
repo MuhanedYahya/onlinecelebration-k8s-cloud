@@ -1,4 +1,3 @@
-src/vendor
 src/.env
 src/.env.example
 src/public/images
