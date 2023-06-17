@@ -54,7 +54,7 @@
                     <button type="button" class="btn-close" aria-label="Close" id="closeAlert"></button>
                 </div>
                 {{-- Error div end --}}
-
+                <h1>Demo</h1>
                 <div class="card">
                     <div class="card-header  text-center">
                         {{-- Create a celebration --}}
