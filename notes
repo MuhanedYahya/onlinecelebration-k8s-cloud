@@ -1,0 +1,89 @@
+Notes:
+
+we have to add .kube/config to jenkins as a secret file
+--------------------------------------------------------------
+-jenkins daemon can't run docker commands so ... we add jenkins to docker group
+ ##sudo usermod -a -G docker jenkins
+--------------------------------------------------------------
+add Docker secret so you can reach private docker images
+---------------------------------------------------------------------------------------------
+Jenkins server:
+install docker , php , php extensions , kubectl
+add jenkins to docker group
+set credentials on jenkins for docker,github,digitalOcean
+set email on jenkins using gmail token to login
+generate token from jenkins and use it to create webhook on github repo
+---------------------------------------------------------------------------------------------
+DOKS:
+add docker secret
+add laravel secret and configmaps
+add grafana and prometheus secrets and configmaps
+
+---------------------------------------------------------------------------------------------
+Prometheus:
+configuration file does not support env variables
+
+---------------------------------------------------------------------------------------------
+nfs volume conf:
+1- deploy nfs rbac
+2- deploy nfs class
+3- deploy nfs deployment
+4- deploy the pvc
+5- go to the generated directory inside of the nfs server then add the needed files there
+
+
+---------------------------------------------------------------------------------------------
+Traefik conf:
+1- install traefik deployment/service using helm
+2- deploy the ingress for the application needed
+3- set the external ip in the domain dns records
+
+---------------------------------------------------------------------------------------------
+ssl conf:
+0- the application must be running
+1- add cert-manager namespace
+2- then install creds from cert-manager
+https://cert-manager.io/docs/installation/
+kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
+3- apply clusterissuer
+4- apply certificate
+5- apply ingress
+6- force https by middleware
+
+
+---------------------------------------------------------------------------------------------
+exporting metrics from laravel app:
+1- change the required phpunit version from composer.json to ###"phpunit/phpunit": "^10.0"### then composer update
+2- composer require promphp/prometheus_client_php ** to install the required library and packages
+3- apply configurations written in this link : https://fly.io/laravel-bytes/instrument-laravel-for-prometheus/
+4- add loging conf into src/config/database.php
+            \PDO::ATTR_EMULATE_PREPARES => true,
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+            \PDO::ATTR_STATEMENT_CLASS => [\Illuminate\Database\Query\Statement::class],
+5- add metrics provider under providers on src/config/app.php
+App\Providers\PrometheusServiceProvider::class,
+6- enable database query loging on language middleware and the other metrics codes "on the handle function"
+then add database metrics on terminate function before you stop the database query loging
+---------------------------------------------------------------------------------------------
+add volume for grafana:
+volumes on digitalocean must be online on another service or using pod as a volume service
+1- create statefull resoure of busybox to handle the data , this will create pv and pvc
+2- take the pvc name from command line and add it to grafana.yaml with the other neccesery codes related to the statefull
+referance:
+https://docs.digitalocean.com/products/kubernetes/how-to/add-volumes/
+---------------------------------------------------------------------------------------------
+if the kubernetes service changed conf:
+1- add the kubernetes kube file as a secret fle inside of the jenkins
+
+
+
+
+
+
+
+
+
+
+
+
