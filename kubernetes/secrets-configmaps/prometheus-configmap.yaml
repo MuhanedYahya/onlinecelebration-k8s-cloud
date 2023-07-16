@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+data:
+  prometheus.yml: |-
+    global:
+      scrape_interval:     10s
+      evaluation_interval: 10s
+      scrape_timeout:      10s
+
+    alerting:
+      alertmanagers:
+      - static_configs:
+        - targets:
+
+    rule_files:
+
+    scrape_configs:
+      - job_name: 'laravel_Application'
+        scheme: https
+        static_configs:
+        - targets: ['piplineapp.live']
